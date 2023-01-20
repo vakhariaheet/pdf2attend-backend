@@ -1,0 +1,6 @@
+{
+    "verbose": true,
+    "ignore":["node_modules/**","uploads/","dist/","*.json","outputs/"],
+    "watch": ["src/"],
+    "exec": "npm run start"
+}
