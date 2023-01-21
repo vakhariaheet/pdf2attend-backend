@@ -9,7 +9,6 @@ import rimraf from 'rimraf';
 import { upload as uploadToS3 } from './utils/UploadS3';
 import { scanFile } from './utils/OCRFile';
 import createExel from './utils/createExel';
-import winston from 'winston';
 import { getLogger } from './utils/Logger';
 import chalk from 'chalk';
 const app = Express();
