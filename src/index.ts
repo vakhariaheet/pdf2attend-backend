@@ -74,6 +74,9 @@ app.get("/file/:fileName",async (req, res) => {
     res.download(`uploads/${fileName}`);
     await rimraf(`uploads/${fileName}`);
 });
+app.get("/", (req, res) => {
+    res.send("Hello World");
+});
 const PORT = process.env.PORT || 3006;
 server.listen(PORT, () => { 
     console.log("Server is running on port", PORT);
