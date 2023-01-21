@@ -13,12 +13,13 @@ import { getLogger } from './utils/Logger';
 import chalk from 'chalk';
 const app = Express();
 dotenv.config();
-app.use(cors({origin: '*'}));
+app.use(cors({ origin: '*' }));
 app.use(Express.json());
 const server = http.createServer(app);
 const io = new Server(server, {
 	cors: {
 		origin: '*',
+		methods: ['GET', 'POST', 'PUT', 'DELETE'],
 	},
 });
 const upload = multer({ dest: 'uploads/' });
