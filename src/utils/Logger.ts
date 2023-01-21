@@ -1,6 +1,6 @@
 import winston from "winston";
 import chalk from "chalk";
-import luxon from "luxon";
+import {DateTime} from "luxon";
 export const getLogger = () => { 
     const logger = winston.createLogger({
         transports: [
@@ -20,7 +20,7 @@ export const getLogger = () => {
                     
                         const { timestamp, level, message } = info;
                         
-                        const ts = luxon.DateTime.fromISO(timestamp).toFormat('yyyy-MM-dd HH:mm:ss');
+                        const ts = DateTime.fromISO(timestamp).toFormat('yyyy-MM-dd HH:mm:ss');
                         return `${chalk.gray(`[${ts}]`)} ${chalk.green(level)}: ${message}`;
                     }
                     ),

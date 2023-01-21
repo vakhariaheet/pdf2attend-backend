@@ -14,7 +14,9 @@ import chalk from 'chalk';
 const app = Express();
 dotenv.config();
 app.use(cors({ origin: '*' }));
-app.use(Express.json());
+app.use(Express.json({
+    limit: '50mb',
+}));
 const server = http.createServer(app);
 const io = new Server(server, {
 	cors: {
