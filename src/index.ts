@@ -14,46 +14,61 @@ import { getLogger } from './utils/Logger';
 import chalk from 'chalk';
 const app = Express();
 dotenv.config();
-app.use(
-	cors({
-		origin: [
-			'http://localhost:5173',
-			'https://pdf2attend.xyz',
-			'https://www.pdf2attend.xyz',
-		],
-	}),
-);
+app.use(cors());
 app.use(Express.json());
 const server = http.createServer(app);
 const io = new Server(server, {
 	cors: {
-		origin: [
-			'http://localhost:5173',
-			'https://pdf2attend.xyz',
-			'https://www.pdf2attend.xyz',
-		],
+		origin: '*',
 	},
 });
 const upload = multer({ dest: 'uploads/' });
 app.use((req, res, next) => {
 	const logger = getLogger();
-	logger.info(`${req.method} ${req.path} ${req.ip} ${req.headers['user-agent']}`);
-    switch (req.method) { 
-        case "GET":
-            console.log(chalk.green(req.method), chalk.blue(req.path), chalk.yellow(req.ip), chalk.magenta(req.headers['user-agent']));
-            break;
-        case "POST":
-            console.log(chalk.cyan(req.method), chalk.blue(req.path), chalk.yellow(req.ip), chalk.magenta(req.headers['user-agent']));
-            break;
-        case "PUT":
-            console.log(chalk.yellow(req.method), chalk.blue(req.path), chalk.yellow(req.ip), chalk.magenta(req.headers['user-agent']));
-            break;
-        case "DELETE":
-            console.log(chalk.red(req.method), chalk.blue(req.path), chalk.yellow(req.ip), chalk.magenta(req.headers['user-agent']));
-            break;
-        default:
-            console.log(chalk.green(req.method), chalk.blue(req.path), chalk.yellow(req.ip), chalk.magenta(req.headers['user-agent']));
-    }
+	logger.info(
+		`${req.method} ${req.path} ${req.ip} ${req.headers['user-agent']}`,
+	);
+	switch (req.method) {
+		case 'GET':
+			console.log(
+				chalk.green(req.method),
+				chalk.blue(req.path),
+				chalk.yellow(req.ip),
+				chalk.magenta(req.headers['user-agent']),
+			);
+			break;
+		case 'POST':
+			console.log(
+				chalk.cyan(req.method),
+				chalk.blue(req.path),
+				chalk.yellow(req.ip),
+				chalk.magenta(req.headers['user-agent']),
+			);
+			break;
+		case 'PUT':
+			console.log(
+				chalk.yellow(req.method),
+				chalk.blue(req.path),
+				chalk.yellow(req.ip),
+				chalk.magenta(req.headers['user-agent']),
+			);
+			break;
+		case 'DELETE':
+			console.log(
+				chalk.red(req.method),
+				chalk.blue(req.path),
+				chalk.yellow(req.ip),
+				chalk.magenta(req.headers['user-agent']),
+			);
+			break;
+		default:
+			console.log(
+				chalk.green(req.method),
+				chalk.blue(req.path),
+				chalk.yellow(req.ip),
+				chalk.magenta(req.headers['user-agent']),
+			);
+	}
 	next();
 });
 io.on('connection', (socket) => {
