@@ -9,12 +9,14 @@ import { upload as uploadToS3 } from "./utils/UploadS3";
 import { scanFile } from "./utils/OCRFile";
 import createExel from "./utils/createExel";
 const app = Express();
-app.use(cors());
+app.use(cors({
+    origin: ["http://localhost:5173", "https://pdf2attend.xyz","https://www.pdf2attend.xyz"],
+}));
 app.use(Express.json());
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "*",
+        origin: ["http://localhost:5173", "https://pdf2attend.xyz","https://www.pdf2attend.xyz"],
     }
 });
 
