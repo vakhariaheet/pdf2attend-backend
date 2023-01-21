@@ -13,12 +13,12 @@ import { getLogger } from './utils/Logger';
 import chalk from 'chalk';
 const app = Express();
 dotenv.config();
-app.use(cors());
+app.use(cors({origin: 'https://www.pdf2attend.xyz'}));
 app.use(Express.json());
 const server = http.createServer(app);
 const io = new Server(server, {
 	cors: {
-		origin: '*',
+		origin: 'https://www.pdf2attend.xyz',
 	},
 });
 const upload = multer({ dest: 'uploads/' });
