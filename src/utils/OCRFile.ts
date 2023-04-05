@@ -69,7 +69,7 @@ export const scanFile = async (name: string, socket: Socket):Promise<any[][][]> 
 						if (b.Relationships)
 							b.Relationships[0].Ids?.forEach((id) => {
 								if (text) text += ' ';
-								text += block.filter((b) => b.Id === id)[0].Text;
+								text += block.filter((b) => b.Id === id)[0]?.Text;
 							});
 						return {
 							BoundingBox: b.Geometry?.BoundingBox,
