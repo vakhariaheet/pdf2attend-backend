@@ -31,6 +31,7 @@ export const scanFile = async (name: string, socket: Socket):Promise<any[][][]> 
 					NextToken,
 				});
 				const detextData = await client.send(detextCommand);
+
 				const status = detextData.JobStatus;
 				if (!status) return;
 				if (status === 'IN_PROGRESS') {
@@ -42,7 +43,9 @@ export const scanFile = async (name: string, socket: Socket):Promise<any[][][]> 
 					}, 4000);
 					return;
 				}
+				fs.writeFileSync("data.json",JSON.stringify(detextData))
 				const block = detextData.Blocks;
+
 				if (!block)
 					return socket.emit('log', {
 						data: 'No blocks found in the document. Try again.',

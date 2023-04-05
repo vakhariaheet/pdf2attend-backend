@@ -84,6 +84,7 @@ io.on('connection', (socket) => {
 		const filteredResult = result
 			.filter((page) => page)
 			.map((page) => page.filter((row) => row));
+		console.log("Emited Result");
 		socket.emit('result', filteredResult);
 	});
 	socket.on('disconnect', () => {
