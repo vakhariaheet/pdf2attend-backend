@@ -6,6 +6,6 @@ export const setTimeoutAsync = (fn: () => void, delay: number) => {
         },delay)
     })
 }
-export const isPromise = (value: any) => { 
+export const isPromise = (value: any) => {
     return value && typeof value.then === 'function';
 }

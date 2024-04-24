@@ -23,7 +23,7 @@ export const upload = async (
 			Key: destPath,
 			Body: file,
 		}));
-		return `https://${process.env.AWS_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com/${destPath}`
+		return `https://${process.env.AWS_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com/pdf2attend/${destPath}`
 	} catch (error) {
 		throw error;
 	}
